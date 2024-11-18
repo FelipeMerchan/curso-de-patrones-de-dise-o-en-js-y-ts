@@ -72,8 +72,8 @@ sale.setStrategy(foreignSale);
 console.log({ foreignSale: sale.calculate(10) });
 
 /* Explicación práctica */
-/* El patrón strategy nos sirve cuando tengamos comportamientos que van a cambiar en un
-objeto en tiempo de ejecución */
+/* El patrón strategy nos sirve cuando tengamos comportamientos que van a cambiar en tiempo de ejecución en un
+objeto que ya existe */
 const data = [
   {
     name: "Erdinger Pikantus",
