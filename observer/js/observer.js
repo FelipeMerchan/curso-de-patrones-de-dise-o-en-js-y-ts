@@ -21,7 +21,7 @@ class Subject {
 
   notify(data) {
     this.observers.forEach((observer) => {
-      /* Todos los observador deben tener el método refresh en este ejemplo */
+      /* Todos los observadores deben tener el método refresh en este ejemplo */
       observer.refresh(data);
     })
   }
