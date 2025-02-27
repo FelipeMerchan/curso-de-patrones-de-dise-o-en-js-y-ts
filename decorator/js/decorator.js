@@ -92,3 +92,8 @@ console.log(product.getDetail());
 /* Decorator 3 con decorator 2 con decorator 1 */
 const HTMLProduct = new HTMLProductDecorator(product);
 myDiv.innerHTML = HTMLProduct.getDetail();
+
+/* El patrón decorador nos solventa la problemática de que no podemos
+hacer herencia múltiple. Lo que hacemos es uso de funcionamiento que
+envuelve otro funcionamiento y así podemos jugar con infinitos funcionamientos
+sin tener que modificar las clases existentes (principio abierto y cerrado). */
