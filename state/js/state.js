@@ -10,7 +10,7 @@
 class DocumentContext {
   constructor() {
     this.content = "";
-    /* EL estado inicial será en blanco */
+    /* El estado inicial será en blanco */
     this.state = new BlankState();
   }
 
@@ -18,6 +18,8 @@ class DocumentContext {
     this.state = state;
   }
 
+  /* A el método o métodos del context podemos llamarlo
+  como nosotros queramos, en este caso lo llamamos write: */
   write(text) {
     this.state.write(this, text);
   }
