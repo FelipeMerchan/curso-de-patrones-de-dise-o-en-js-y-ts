@@ -94,6 +94,44 @@ class FormBuilder {
   }
 }
 
+/* Un director va a ser el encargado de tener recetas, es decir, por medio
+del patrón builder creamos objetos que regularmente son complejos con distinta
+presentación, el director tiene esas presentaciones guardadas para crearlas directamente.
+Es decir, tiene los pasos/receta para construir el objeto.
+
+Esto nos da una herramienta extra de que vamos a tener un conjunto de preparaciones
+listas para construir un objeto complejo en base a ciertos pasos.
+*/
+
+class FormDirector {
+  constructor(formBuilder) {
+    this.setBuilder(formBuilder);
+  }
+
+  setBuilder(formBuilder) {
+    this.formBuilder = formBuilder;
+  }
+
+  /* Reseta para crear una de las posibles presentaciones del objeto.
+  Es un recetario de qué pasos/elementos va a tener y en qué orden los
+  va a ejecutar/tener */
+  createPeopleForm() {
+    this.formBuilder.reset();
+    this.formBuilder.setText("firstName", "Nombre")
+                    .setText("lastName", "Apellido");
+  }
+
+  /* El objetivo del director es tener recetas, por lo cual,
+  podemos crear más recetas como createContactForm para crear
+  objetos con diferentes presentaciones: */
+  createContactForm() {
+    this.formBuilder.reset();
+    this.formBuilder.setText("name", "Nombre del interesado")
+                    .setEmail("email", "Correo electrónico")
+                    .setText("message", "Mensaje");
+  }
+}
+
 const formBuilder = new FormBuilder();
 const formPeople = formBuilder.setAction('add.php')
                               .setText("firstName", "Nombre")
@@ -109,3 +147,20 @@ const formEmail = formBuilder.setAction("send.php")
                                .setEmail("email", "Correo electrónico")
                                .build();
 form2.innerHTML = formEmail.getContent();
+
+const director = new FormDirector(formBuilder);
+director.createPeopleForm();
+form3.innerHTML = formBuilder.build().getContent();
+
+director.createPeopleForm();
+form4.innerHTML = formBuilder.build().getContent();
+
+/* El mismo director sabe hacer diferentes recetas, en esta
+ocasión crea formularios de contacto: */
+director.createContactForm();
+form5.innerHTML = formBuilder.build().getContent();
+
+/* Gracias al patrón builder podemos crear objetos complejos por medio
+de directores los cuales tienen los pasos y secuencias que permiten
+crear los objetos.
+ */
