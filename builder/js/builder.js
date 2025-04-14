@@ -13,7 +13,7 @@
 /* Person es la representación del producto (que vemos en la imagen
   Builder.png) */
 class Person {
-  /* En el construcutor vemos que tenemos muchas propiedades
+  /* En el constructor vemos que tenemos muchas propiedades
   para el objeto, por lo que podemos detectar que en este caso
   vendría bien usar Builder: */
   constructor(name, lastName, age, country, city, hobbies) {
